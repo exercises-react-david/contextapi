@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import Bands from './components/Bands';
+import map from "./usa-map.svg";
 
 export default class App extends Component {
 
@@ -22,11 +23,14 @@ export default class App extends Component {
 
     render() {
         return (
+          <React.Fragment>
             <div className="container">
                 <Bands
                   bands={this.state.bands}
                 />
             </div>
+            <img className="usa-map" src={map} />
+          </React.Fragment>
         );
     }
-}
+  }
