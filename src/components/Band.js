@@ -1,20 +1,27 @@
 import React,{Component} from 'react';
 import styled from 'styled-components';
+import {DiskContext} from './Disk';
 
 export default class Band extends Component {
 
     render() {
-        const {name,songs} = this.props.band;
-
         return (
-           <ListItem classname="list-group-item d-flex justify-content-between align-items-center">
-                <p className="m-0">
-                    {name}
-                </p>
-                <span className="badge badge-danger">
-                    {songs}
-                </span>
-           </ListItem>
+            <DiskContext.Consumer>
+                {(value) =>{
+                    return Object.keys(value.state).map(bandId => {
+                        return (
+                            <ListItem key={bandId}>
+                                <p className="m-0">
+                                    {value.state[bandId].name}
+                                </p>
+                                <span className="badge badge-danger">
+                                        {value.state[bandId].songs}
+                                </span>
+                            </ListItem>
+                        )
+                    })
+                }}
+            </DiskContext.Consumer>
         );
     }
 }
