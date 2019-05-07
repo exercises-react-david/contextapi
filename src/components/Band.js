@@ -17,6 +17,7 @@ export default class Band extends Component {
                                 <span className="badge badge-danger">
                                         {value.state[bandId].songs}
                                 </span>
+                                <button onClick={()=>{value.addSong(bandId)}} className="btn btn-success" type="button">+ song</button>
                             </ListItem>
                         )
                     })
@@ -30,6 +31,7 @@ const ListItem = styled.li`
 border: 1px solid gray;
 list-style: none;
 display: grid;
-grid-template-columns: 1fr 30px;
+grid-gap: 5px;
+grid-template-columns: 1fr 30px 80px;
 padding: 5px;
 `;

@@ -25,7 +25,15 @@ export default class DiskProvider extends Component {
     render() {
         return (
             <DiskContext.Provider value={{
-                state: this.state.bands
+                state: this.state.bands,
+                addSong: (id) => {
+                    const bands = [...this.state.bands];
+                    bands[id].songs+=1;
+
+                    this.setState({
+                        state: bands
+                    })
+                }
             }}>
             {this.props.children}
             </DiskContext.Provider>
